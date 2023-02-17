@@ -192,7 +192,7 @@ https://docs.docker.com/desktop/install/windows-install/
 
 https://www.youtube.com/watch?v=X3Wtjwu0vBI
 
-Shared By Vicky--->
+Shared By--->
 https://levelup.gitconnected.com/how-to-deploy-an-application-to-aws-fargate-cd3cfaccc537
 
 Node-Express App Image
