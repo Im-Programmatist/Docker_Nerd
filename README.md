@@ -74,11 +74,21 @@
     Sample file :- 
         FROM ubuntu
         RUN echo "CHetan Korde Patil" > /tmp/testfile
-19. To create docker image from docker file 
+19. To create docker image from docker file & Run it 
     - $ docker build -t myimg . 
     (here, '.' is current directory, -t is tag )
     then see running image - - $ docker ps -a  OR docker images
     then create container using run command - docker run -it --name newcontname myimg /bin/bash
+    - $ docker build . -t <your-username>/<name-for-image>
+    - eg. docker build . -t ckorde/node-swagger-web-app
+    - **Run Docker image and make container by publishing on port**
+    - docker run -p host_port:container_port -d <your-username>/<name-for-image>
+    - eg. - docker run -p 49160:9092 -d ckorde/node-swagger-web-app
+    - -d runs the container in detached mode, leaving the container running in the background. The -p flag redirects a public port to a private port inside the container.
+    - **Print app output**
+    - $ docker logs <container id> (container id get from $ docker ps)
+    - **Kill our running container**
+    - $ docker kill <container id>
 
 20. Example of Docker File - 
         FROM ubuntu
@@ -152,7 +162,8 @@
     - We can not change docker container's port it is defined already on the other hand we can change port in host
     - Docker port expose means we map host port with docker container port, request come to host 80 port then it is mapped with container and request come to container
     - **$ docker run -td --name cont_name -p 80:80 ubuntu**
-    - here td id tag demon it run not bring us in container, 80:80 means first port is host map with next container port 
+    - eg - docker run -td --name swagger-container -p 9092:9092 ckorde/node-swagger-app
+    - here td is tag demon it run not bring us in container, 80:80 means first port is host map with next container port 
     - P(publish) is override to expose command for port to communicate among containers in local as well as internet
     - Instead of P we can use expose but it will allow to communicate locally(communicate with all other container available on that host) only not on internet
     - If not mention either P(publish) or expose, then service in container will only be access within container
