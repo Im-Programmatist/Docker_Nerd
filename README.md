@@ -20,11 +20,15 @@
     - $ docker run bitnami/express
 7. To give name to creating container 
     - $ docker run -it --name container_name ubuntu /bin/bash
-    (here -it is interactive mode, ubuntu is image name, bin/bash is for run commands in terminal which is created by -it )
+    - here -it is interactive mode it run docker and enter in container(not create and leave out, for this use -td), 
+    - & ubuntu is image name, bin/bash is for run commands in terminal which is created by -it 
 8. To start container
     - $ docker start container_name(ubuntu,express etc)
 9. To go inside container 
     - $ docker attach container_name
+    - this attach will bring you in same process with existing process id - ppid (parent process id)
+    - $ docker exec container_name
+    - this exec will bring us inside container but in new process - pid
 10. To see all container available 
     - $ docker ps -a 
     (-a is all)
@@ -143,9 +147,23 @@
         - $ docker volume inspect vol_name --> to check details of volume
         - $ docker container inspect cont_name --> to check details of container
 
-
 22. Port expose and port publish, difference between docker exec and docker attach 
     - https://www.youtube.com/watch?v=p4HuoL7hwXI
+    - We can not change docker container's port it is defined already on the other hand we can change port in host
+    - Docker port expose means we map host port with docker container port, request come to host 80 port then it is mapped with container and request come to container
+    - **$ docker run -td --name cont_name -p 80:80 ubuntu**
+    - here td id tag demon it run not bring us in container, 80:80 means first port is host map with next container port 
+    - P(publish) is override to expose command for port to communicate among containers in local as well as internet
+    - Instead of P we can use expose but it will allow to communicate locally(communicate with all other container available on that host) only not on internet
+    - If not mention either P(publish) or expose, then service in container will only be access within container
+    - **$ docker port cont_name** 
+    - above command will show all port mapped with host
+    - **$ docker exec -it cont_name /bin/bash**
+    - exec also used like attach, this exec used to go inside container but with new process, attach bring us in previous process running.
+    - if we create container using ubuntu install server using - apt-get update, apt-get install apache2 -y
+    - then cd /var/www/html then $ echo "hellow world!!" >index.html
+    - service apache2 start
+
 23. Create docker hub account and publish image 
     - https://www.youtube.com/watch?v=3moRvwkqy_A
 
