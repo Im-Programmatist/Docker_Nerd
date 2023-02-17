@@ -1,0 +1,11 @@
+* before 
+1. create image/build from docker file and delete old image
+docker build --rm -t old_image_tag_name -f reference_dir/Dockerfile .
+
+2. Tag latest image with aws ecs registry 
+docker tag image_name:latest 125370278.dkr.ecr.ap-south-1.amazonaws.com/image_name:latest
+
+3. Push image in ecs registry
+docker push 125370278.dkr.ecr.ap-south-1.amazonaws.com/image_name:latest
+
+
