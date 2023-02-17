@@ -35,6 +35,8 @@
     $ docker stop container_name
 13. To delete container
     $ docker rm container_name
+    To delete image
+    $ docker rmi image_name/img_id
 14. check where is docker installed
     $ which docker
 15. If we want to check difference between base image and changes worked on it in container 
@@ -86,8 +88,8 @@
 
 21. Create Shared Volume/Directory in Docker
     - https://www.youtube.com/watch?v=OoZxPUgpUUM
-    1. Container to Container - Create container and make volume and share it with other container
-    2. Host to container share volume - shared with host machine where container created
+    1. **Container to Container - Create container and make volume and share it with other container**
+    2. **Host to container share volume - shared with host machine where container created**
     3. Even if we stop container we can access volume to others
     4. Volume created in one container only, once create then we can share it with other container
     5. Volume only create at the time of creating container, we must mention it to create.
@@ -100,13 +102,29 @@
         2. we can share data samong containers and also host to container and wise versa
         3. If one big file downloaded in container then other do not need to download it other can share it
         4. on deleting container volume not deleted
-    10. To create volume component use in docker file 
+    10. **To create & share volume component use in docker file**
         VOLUME ["/my_volume_dir"] 
+        (*** Sample Code
+            FROM ubuntu
+            WORKDIR /tmp
+            RUN echo "This image" > /tmp/createVolume
+            ENV myname 'chetan korde'
+            COPY testfile1 /tmp
+            ADD test.tar.gz /tmp
+            VOLUME ["/myvolume"]
+        )
         then create image file, create container (command mentioned above)
         **Now we will see directory/volume
     11. Share volume share with other container
         $ docker run -it  --name new_container_name --privileged=true --volumes-from previous_container_name ubuntu(image name) /bin/bash
         now new container can access volume, if we add new file in it it will be visible in previous container
+    12. **Try to Create & share Volume Using Commands**
+        $ docker run -it --name cont_name -v /valume_name image_name /bin/bash
+        (this -v will create new volume)
+        share volume - $ docker run -it new_cont_name --privileged=true --volumes-from cont_name_where_vol_created image_name /bin/bash 
+    13. **Try to share directory/volume with host and docker engine**
+        $ docker run -it --name cont_name -v /home/ec2-user:/valume_name --privileged=true image_name /bin/bash 
+        (**':' this colon map hostdir with new vol, it also distinguish between host directory and new volume/dir while creating using command)
 
 22. Port expose and port publish, difference between docker exec and docker attach 
     - https://www.youtube.com/watch?v=p4HuoL7hwXI
