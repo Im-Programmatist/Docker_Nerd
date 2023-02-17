@@ -2,51 +2,51 @@
 
 
 ## To install docker in linux
-    $ yum install docker -y
+    - $ yum install docker -y
 
 1. To check whether service start or not- docker engine run or not
-    $ service docker status 
+    - $ service docker status 
     or
-    $ docker info
+    - $ docker info
 2. To start docker demon/engine
-    $ service docker start
+    - $ service docker start
 3. To find images available on docker engine(locally)
-    $ docker images
+    - $ docker images
 4. To search images on docker hub 
-    $ docker search express
+    - $ docker search express
 5. To pull image from docker hub to local 
-    $ docker pull bitnami/express
+    - $ docker pull bitnami/express
 6. To pull and run image from docker hub
-    $ docker run bitnami/express
+    - $ docker run bitnami/express
 7. To give name to creating container 
-    $ docker run -it --name container_name ubuntu /bin/bash
+    - $ docker run -it --name container_name ubuntu /bin/bash
     (here -it is interactive mode, ubuntu is image name, bin/bash is for run commands in terminal which is created by -it )
 8. To start container
-    $ docker start container_name(ubuntu,express etc)
+    - $ docker start container_name(ubuntu,express etc)
 9. To go inside container 
-    $ docker attach container_name
+    - $ docker attach container_name
 10. To see all container available 
-    $ docker ps -a 
+    - $ docker ps -a 
     (-a is all)
 11. To see only running container
-    $ docker ps
+    - $ docker ps
     (ps - is process status)
 12. To stop container
-    $ docker stop container_name
+    - $ docker stop container_name
 13. To delete container
-    $ docker rm container_name
+    - $ docker rm container_name
     To delete image
-    $ docker rmi image_name/img_id
+    - $ docker rmi image_name/img_id
 14. check where is docker installed
-    $ which docker
+    - $ which docker
 15. If we want to check difference between base image and changes worked on it in container 
-    $ docker diff container_name updated_image_name
+    - $ docker diff container_name updated_image_name
 16. Info in file would show C,A & D 
     C - changes
     D - deletion
     A - Append Or Addition 
 17. Create docker image from container
-    $ docker commit container_name image_name 
+    - $ docker commit container_name image_name 
     (image_name is new name for file, above command give SHA code)
 18. Create docker file using commands 
     1. File name should be - Dockerfile (D- capital)
@@ -71,9 +71,9 @@
         FROM ubuntu
         RUN echo "CHetan Korde Patil" > /tmp/testfile
 19. To create docker image from docker file 
-    $ docker build -t myimg . 
+    - $ docker build -t myimg . 
     (here, '.' is current directory, -t is tag )
-    then see running image - $ docker ps -a  OR docker images
+    then see running image - - $ docker ps -a  OR docker images
     then create container using run command - docker run -it --name newcontname myimg /bin/bash
 
 20. Example of Docker File - 
@@ -84,7 +84,7 @@
         COPY testfile1 /tmp
         ADD test.tar.gz /tmp
         
-        (*** ENV variables can see using $ echo $variable_name like $ echo $myname here )
+        (*** ENV variables can see using - $ echo $variable_name like - $ echo $myname here )
 
 21. Create Shared Volume/Directory in Docker
     - https://www.youtube.com/watch?v=OoZxPUgpUUM
@@ -122,25 +122,25 @@
         **Now we will see directory/volume
 
     11. Share volume share with other container
-        $ docker run -it  --name new_container_name --privileged=true --volumes-from previous_container_name ubuntu(image name) /bin/bash
+        - $ docker run -it  --name new_container_name --privileged=true --volumes-from previous_container_name ubuntu(image name) /bin/bash
         now new container can access volume, if we add new file in it it will be visible in previous container
 
     12. **Try to Create & share Volume Using Commands**
-        $ docker run -it --name cont_name -v /valume_name image_name /bin/bash
+        - $ docker run -it --name cont_name -v /valume_name image_name /bin/bash
         (this -v will create new volume)
-        share volume - $ docker run -it new_cont_name --privileged=true --volumes-from cont_name_where_vol_created image_name /bin/bash 
+        share volume - - $ docker run -it new_cont_name --privileged=true --volumes-from cont_name_where_vol_created image_name /bin/bash 
 
     13. **Try to share directory/volume with host and docker engine**
-        $ docker run -it --name cont_name -v /home/ec2-user:/valume_name --privileged=true image_name /bin/bash 
+        - $ docker run -it --name cont_name -v /home/ec2-user:/valume_name --privileged=true image_name /bin/bash 
         (':' this colon map hostdir with new vol, it also distinguish between host directory and new volume/dir while creating using command)
     
     14. **Other commands**
-        $ docker volume ls --> list of all volume 
-        $ docker volume create vol_name --> create normal volume locally
-        $ docker volume rm vol_name --> delete used volume
-        $ docker volume prune --> It remove all unused docker volumes
-        $ docker volume inspect vol_name --> to check details of volume
-        $ docker container inspect cont_name --> to check details of container
+        - $ docker volume ls --> list of all volume 
+        - $ docker volume create vol_name --> create normal volume locally
+        - $ docker volume rm vol_name --> delete used volume
+        - $ docker volume prune --> It remove all unused docker volumes
+        - $ docker volume inspect vol_name --> to check details of volume
+        - $ docker container inspect cont_name --> to check details of container
 
 
 22. Port expose and port publish, difference between docker exec and docker attach 
