@@ -97,15 +97,18 @@
     7. When we add something in volume it will reflect in other container where volume is shared and wise versa.
     8. *note that if we create cvolume in container and then make image from it, once we create new container
         from that image then that volume created in previous container not considered as shared value it will ne new and not reflect changes happening in previous containers volume
+
     9. Advantages - 
         1. decoupling from container - volume will be exist even if container stopped
         2. we can share data samong containers and also host to container and wise versa
         3. If one big file downloaded in container then other do not need to download it other can share it
         4. on deleting container volume not deleted
+
     10. **To create & share volume component use in docker file**
         VOLUME ["/my_volume_dir"] 
         
-        (*** Sample Code
+        (***Sample Code --->
+
             FROM ubuntu
             WORKDIR /tmp
             RUN echo "This image" > /tmp/createVolume
@@ -113,23 +116,32 @@
             COPY testfile1 /tmp
             ADD test.tar.gz /tmp
             VOLUME ["/myvolume"]
-        )
 
+        ***)
         then create image file, create container (command mentioned above)
         **Now we will see directory/volume
+
     11. Share volume share with other container
         $ docker run -it  --name new_container_name --privileged=true --volumes-from previous_container_name ubuntu(image name) /bin/bash
         now new container can access volume, if we add new file in it it will be visible in previous container
+
     12. **Try to Create & share Volume Using Commands**
         $ docker run -it --name cont_name -v /valume_name image_name /bin/bash
         (this -v will create new volume)
         share volume - $ docker run -it new_cont_name --privileged=true --volumes-from cont_name_where_vol_created image_name /bin/bash 
+
     13. **Try to share directory/volume with host and docker engine**
         $ docker run -it --name cont_name -v /home/ec2-user:/valume_name --privileged=true image_name /bin/bash 
-        
-        (*** ':' this colon map hostdir with new vol, it also distinguish between host directory and new volume/dir while creating using command)
+        (':' this colon map hostdir with new vol, it also distinguish between host directory and new volume/dir while creating using command)
+    
+    14. **Other commands**
+        $ docker volume ls --> list of all volume 
+        $ docker volume create vol_name --> create normal volume locally
+        $ docker volume rm vol_name --> delete used volume
+        $ docker volume prune --> It remove all unused docker volumes
+        $ docker volume inspect vol_name --> to check details of volume
+        $ docker container inspect cont_name --> to check details of container
 
-        
 
 22. Port expose and port publish, difference between docker exec and docker attach 
     - https://www.youtube.com/watch?v=p4HuoL7hwXI
