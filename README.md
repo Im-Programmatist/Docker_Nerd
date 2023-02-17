@@ -104,6 +104,7 @@
         4. on deleting container volume not deleted
     10. **To create & share volume component use in docker file**
         VOLUME ["/my_volume_dir"] 
+        
         (*** Sample Code
             FROM ubuntu
             WORKDIR /tmp
@@ -113,6 +114,7 @@
             ADD test.tar.gz /tmp
             VOLUME ["/myvolume"]
         )
+
         then create image file, create container (command mentioned above)
         **Now we will see directory/volume
     11. Share volume share with other container
@@ -124,7 +126,10 @@
         share volume - $ docker run -it new_cont_name --privileged=true --volumes-from cont_name_where_vol_created image_name /bin/bash 
     13. **Try to share directory/volume with host and docker engine**
         $ docker run -it --name cont_name -v /home/ec2-user:/valume_name --privileged=true image_name /bin/bash 
-        (**':' this colon map hostdir with new vol, it also distinguish between host directory and new volume/dir while creating using command)
+        
+        (*** ':' this colon map hostdir with new vol, it also distinguish between host directory and new volume/dir while creating using command)
+
+        
 
 22. Port expose and port publish, difference between docker exec and docker attach 
     - https://www.youtube.com/watch?v=p4HuoL7hwXI
