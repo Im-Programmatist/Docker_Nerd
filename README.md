@@ -1,7 +1,7 @@
 # Docker 
 
 
-## To install docker in linux
+**To install docker in linux**
     - $ yum install docker -y
 
 1. To check whether service start or not- docker engine run or not
@@ -128,7 +128,8 @@
     12. **Try to Create & share Volume Using Commands**
         - $ docker run -it --name cont_name -v /valume_name image_name /bin/bash
         (this -v will create new volume)
-        share volume - - $ docker run -it new_cont_name --privileged=true --volumes-from cont_name_where_vol_created image_name /bin/bash 
+        - share volume: 
+        - $ docker run -it new_cont_name --privileged=true --volumes-from cont_name_where_vol_created image_name /bin/bash 
 
     13. **Try to share directory/volume with host and docker engine**
         - $ docker run -it --name cont_name -v /home/ec2-user:/valume_name --privileged=true image_name /bin/bash 
