@@ -1,11 +1,14 @@
 # Docker <img src="Docker_Image.gif" width="10%" height="auto" alt="Docker">
 
-**About**
+## About
     - Docker is a containerization platform that packages your application and all its dependencies together in the form of a docker container to ensure that your application works seamlessly in any environment.
     - Docker initially developed on linux , recently provided support to windows 10 and above versions.
 
-**Docker Vs VM (Containerization Vs Virtualization)**
+## Docker Vs VM (Containerization Vs Virtualization)
+
 <img src="docker_vs_vm.gif" width="100%" height="auto" alt="Docker_Vs_VM"/>
+
+## Docker Commands & Details
 
 **To install docker in linux**
     - $ yum install docker -y
