@@ -1,5 +1,10 @@
 # Docker <img src="Docker_Image.gif" width="10%" height="auto" alt="Docker">
 
+**About**
+    - Docker is a containerization platform that packages your application and all its dependencies together in the form of a docker container to ensure that your application works seamlessly in any environment.
+    - Docker initially developed on linux , recently provided support to windows 10 and above versions.
+
+**Docker Vs VM (Containerization Vs Virtualization)**
 <img src="docker_vs_vm.gif" width="100%" height="auto" alt="Docker_Vs_VM"/>
 
 **To install docker in linux**
@@ -178,6 +183,9 @@
 
 23. Create docker hub account and publish image 
     - https://www.youtube.com/watch?v=3moRvwkqy_A
+
+## CheatSheet
+<img src="Docker-Cheat-Sheet-2022.webp" alt="docker_cheatsheet"/>
 
 ## References
 https://docs.docker.com/get-started
