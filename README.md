@@ -2,7 +2,7 @@
 
 ## About
     - Docker is a containerization platform that packages your application and
-    - all its dependencies together in the form of a docker container to ensure that your application works seamlessly in any environment.
+    - All its dependencies together in the form of a docker container to ensure that your application works seamlessly in any environment.
     - Docker initially developed on linux, recently provided support to windows 10 and above versions.
 
 ## Docker Vs VM (Containerization Vs Virtualization)
