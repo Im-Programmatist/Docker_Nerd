@@ -1,5 +1,7 @@
 # Docker 
 
+<img src="./Docker_Image.gif" alt="Docker">
+<img src="docker_vs_vm.gif" alt=""/>
 
 **To install docker in linux**
     - $ yum install docker -y
