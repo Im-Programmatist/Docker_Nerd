@@ -1,4 +1,4 @@
-# Docker <img src="Docker_Image.gif" width="1050%" height="auto" alt="Docker">
+# Docker <img src="Docker_Image.gif" width="10%" height="auto" alt="Docker">
 
 <img src="docker_vs_vm.gif" width="100%" height="auto" alt="Docker_Vs_VM"/>
 
